@@ -20,6 +20,12 @@ set(HEADERS
 )
 
 add_library(${PROJ_NAME} ${SOURCES} ${HEADERS})
-set_target_properties(${PROJ_NAME} PROPERTIES FOLDER "xclass/libs/3rdParty")
+set_target_properties(
+    ${PROJ_NAME} 
+  PROPERTIES
+    FOLDER "xclass/libs/3rdParty"
+	# set for static runtime 
+	MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
+)
 
 target_include_directories(${PROJ_NAME} PRIVATE ${PROJ_FOLDER}/include)
